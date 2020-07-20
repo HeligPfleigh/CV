@@ -1,3 +1,3 @@
 # For export my CV in all enviroment, not only in window
 
-![](https://github.com/HeligPfleigh/CV/workflows/CV%builder/badge.svg)
+![Build LaTex](https://github.com/HeligPfleigh/CV/workflows/Build%20LaTex/badge.svg)
