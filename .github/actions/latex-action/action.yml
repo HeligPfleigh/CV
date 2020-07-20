@@ -1,0 +1,6 @@
+# action.yml
+name: "LaTex pdf build"
+description: "To build my CV"
+runs:
+  using: "docker"
+  image: "Dockerfile"

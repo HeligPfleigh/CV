@@ -1,0 +1,18 @@
+name: Build LaTex
+
+on: [workflow_dispatch]
+
+jobs:
+  build:
+    name: CV builder
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build CV
+        id: build_cv
+        uses: ./.github/actions/latex-action
+      - name: Upload PDF file to artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: cv
+          path: cv.pdf
