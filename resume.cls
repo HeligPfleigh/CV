@@ -20,6 +20,8 @@
 \usepackage{array}                  % required for boldface tabular columns
 \usepackage{ifthen}
 \usepackage{hyperref}
+\usepackage{setspace}
+\usepackage{fontawesome}
 
 \hypersetup{
     colorlinks=true,
