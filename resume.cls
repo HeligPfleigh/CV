@@ -117,6 +117,16 @@
   \vspace{0.5em}
 }
 
+\newlength{\spacebox}
+\settowidth{\spacebox}{8888888888}			% Box to align text
+% \newcommand{\sepspace}{\vspace*{1em}}
+
+\newcommand{\PersonalEntry}[2]{
+		\noindent\hangindent=2em\hangafter=0 % Indentation
+		\parbox{\spacebox}{        % Box to align text
+		\textit{#1}}		       % Entry name (birth, address, etc.)
+		\hspace{1.5em} #2 \par}    % Entry value
+
 \def\namesize{\huge}
 \def\nameskip{\medskip}
 \def\addressskip{\smallskip}
