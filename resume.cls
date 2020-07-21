@@ -22,6 +22,9 @@
 \usepackage{hyperref}
 \usepackage{setspace}
 \usepackage{fontawesome}
+\usepackage{graphicx}
+
+\graphicspath{ {./images/} }
 
 \hypersetup{
     colorlinks=true,
