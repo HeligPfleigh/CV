@@ -17,11 +17,11 @@ const navStyle = css({
   fontSize: "1.125rem",
 });
 
-const linkStyle = (props: { active: boolean }) =>
+const linkStyle = (props: { isActive: boolean }) =>
   css({
     padding: "0.5rem 2rem",
     borderRadius: "0.5rem",
-    backgroundColor: props.active ? "rgb(229,231,235)" : "inherit",
+    backgroundColor: props.isActive ? "rgb(229,231,235)" : "inherit",
     textDecoration: "inherit",
     color: "inherit",
   });
@@ -36,11 +36,11 @@ const Header = () => {
   return (
     <header css={headerStyle}>
       <nav css={navStyle}>
-        <Link to="/" active={pathname === "/"}>
+        <Link to="/" isActive={pathname === "/"}>
           About
         </Link>
-        <Link to="/blogs" active={pathname === "/blogs"}>
-          Blogs
+        <Link to="/works" isActive={pathname === "/works"}>
+          Works
         </Link>
       </nav>
       <div></div>

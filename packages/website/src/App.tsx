@@ -1,12 +1,18 @@
 import { Routes, Route, useLocation } from "react-router-dom";
-import { ThemeProvider } from "@emotion/react";
+import { css, ThemeProvider } from "@emotion/react";
 import ProgressBar from "@badrap/bar-of-progress";
 import { useEffect, useRef } from "react";
 
 import { light } from "./themes";
 import Header from "./components/Header";
-import Home from "./views/Home";
 import Layout from "./components/Layout";
+import Home from "./views/Home";
+import WorkExperience from "./views/WorkExperience";
+
+const mainStyle = css({
+  padding: "1.5rem",
+  marginTop: "3rem",
+});
 
 function App() {
   const { pathname } = useLocation();
@@ -25,12 +31,13 @@ function App() {
   return (
     <ThemeProvider theme={light}>
       <Layout>
-        <>
-          <Header />
+        <Header />
+        <main css={mainStyle}>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/works" element={<WorkExperience />} />
           </Routes>
-        </>
+        </main>
       </Layout>
     </ThemeProvider>
   );
