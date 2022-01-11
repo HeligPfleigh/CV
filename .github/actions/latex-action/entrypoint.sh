@@ -1,2 +1,2 @@
 #!/bin/sh -l
-pdflatex ./cv.tex
+pdflatex ./packages/pdf/cv.tex
