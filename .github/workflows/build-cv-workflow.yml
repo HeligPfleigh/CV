@@ -7,12 +7,12 @@ jobs:
     name: CV builder
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Build CV
         id: build_cv
         uses: ./.github/actions/latex-action
       - name: Upload PDF file to artifact
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v4
         with:
           name: cv
           path: cv.pdf
