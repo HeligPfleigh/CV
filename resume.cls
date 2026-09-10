@@ -1,139 +1,174 @@
-% resume.cls
-
-% \documentstyle{resume}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Copyright (C) 2010 by Trey Hunner
-%
-% Copying and distribution of this file, with or without modification,
-% are permitted in any medium without royalty provided the copyright
-% notice and this notice are preserved.  This file is offered as-is,
-% without any warranty.
-%
+% Modern Professional Resume Class
+% Refactored for clean typography, semantic layout, and ATS-friendliness
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\ProvidesClass{resume}[2010/07/10 v0.9 Resume class]
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{resume}[2026/09/11 v2.0 Modern Resume Class]
 
-\LoadClass[11pt,letterpaper]{article}
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
+\ProcessOptions\relax
 
-\usepackage[parfill]{parskip}       % Do not indent paragraphs
-\usepackage{array}                  % required for boldface tabular columns
-\usepackage{ifthen}
-\usepackage{hyperref}
-\usepackage{setspace}
-\usepackage{fontawesome}
-\usepackage{graphicx}
+\LoadClass[11pt,a4paper]{article}
+
+% Core Packages
+\RequirePackage{parskip}                % Paragraph separation without indent
+\RequirePackage{array}                  % Advanced table column formatting
+\RequirePackage{ifthen}                 % Conditionals
+\RequirePackage{graphicx}               % Images
+\RequirePackage{xcolor}                 % Modern color support
+\RequirePackage{fontawesome}            % Icons
+\RequirePackage{setspace}               % Line spacing
+\RequirePackage{enumitem}               % Fine-grained list spacing
+\RequirePackage{fancyhdr}               % Headers and footers
+\RequirePackage{lastpage}               % Reference last page number
 
 \graphicspath{ {./images/} }
 
+% Curated Color Palette
+\definecolor{primary}{HTML}{0F172A}      % Dark charcoal / Slate 900 for main headers
+\definecolor{accent}{HTML}{1D4ED8}       % Slate / Royal blue for highlights & rules
+\definecolor{textdark}{HTML}{1E293B}     % Crisp dark body text
+\definecolor{subtext}{HTML}{475569}      % Slate 600 for metadata & dates
+\definecolor{rulecolor}{HTML}{CBD5E1}    % Slate 300 for subtle borders
+\definecolor{linkblue}{HTML}{1D4ED8}     % High-contrast accessible link color
+
+% Hyperref Setup
+\RequirePackage{hyperref}
 \hypersetup{
     colorlinks=true,
-    urlcolor=cyan,
+    urlcolor=linkblue,
+    linkcolor=accent,
+    pdfborder={0 0 0}
 }
 
-\nofiles                            % .aux files are not needed for resumes
-\pagestyle{empty}                   % resumes do not need page numbers
+% Page Numbering & Footer Setup
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\cfoot{\small\color{subtext} Page \thepage\ of \pageref{LastPage}}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% HEADINGS: Commands for printing name and address
+% Personal Metadata Definitions
+\def\@name{}
+\def\@title{}
+\def\@profilepic{}
+\def\@email{}
+\def\@phone{}
+\def\@location{}
+\def\@linkedinlink{}
+\def\@linkedintext{}
+\def\@githublink{}
+\def\@githubtext{}
+\def\@skypelink{}
+\def\@skypetext{}
 
-\def \name#1{\def\@name{#1}}        % \name command can be used to set name
-\def \@name {}                      % Set \@name to empty by default
+\newcommand{\name}[1]{\def\@name{#1}}
+\newcommand{\tagline}[1]{\def\@title{#1}}
+\newcommand{\profilepic}[1]{\def\@profilepic{#1}}
+\newcommand{\email}[1]{\def\@email{#1}}
+\newcommand{\phone}[1]{\def\@phone{#1}}
+\newcommand{\location}[1]{\def\@location{#1}}
+\newcommand{\linkedin}[2]{\def\@linkedinlink{#1}\def\@linkedintext{#2}}
+\newcommand{\github}[2]{\def\@githublink{#1}\def\@githubtext{#2}}
+\newcommand{\skype}[2]{\def\@skypelink{#1}\def\@skypetext{#2}}
 
-\def \addressSep {$\diamond$}         % Set default address seperator
-
-% One or two address lines can be specified 
-\let \@addressone \relax
-\let \@addresstwo \relax
-
-% \address command can be used to set first and second address (optional)
-\def \address #1{
-  \@ifundefined{@addresstwo}{
-    \def \@addresstwo {#1}
-  }{
-    \def \@addressone {#1}
-  }
+% Personal Entry / Icon items
+\newcommand{\ContactItem}[2]{%
+  \mbox{\textcolor{accent}{#1}\hspace{5pt}\textcolor{textdark}{#2}}%
 }
 
-% \printaddress is used to style an address line (given as input)
-\def \printaddress #1{
+% Header Macro
+\newcommand{\makecvheader}{%
   \begingroup
-    \def \\ {\addressSep\ }
-    \centerline{#1}
-  \endgroup
+  \noindent
+  \begin{minipage}[c]{\ifx\@profilepic\@empty 1.0\linewidth \else 0.77\linewidth \fi}
+    {\LARGE\bfseries\color{primary} \@name}\par
+    \ifx\@title\@empty \else
+      \vspace{2pt}
+      {\large\bfseries\color{accent} \@title}\par
+    \fi
+    \vspace{4pt}
+    % Contact Grid / Details
+    \small
+    \begin{tabular}{@{}p{0.46\linewidth} @{\hspace{0.04\linewidth}} p{0.50\linewidth}@{}}
+      \ifx\@phone\@empty \else \ContactItem{\faPhone}{\@phone} \fi &
+      \ifx\@email\@empty \else \ContactItem{\faEnvelope}{\href{mailto:\@email}{\@email}} \fi \\[2pt]
+      \ifx\@location\@empty \else \ContactItem{\faMapMarker}{\@location} \fi &
+      \ifx\@linkedinlink\@empty \else \ContactItem{\faLinkedin}{\href{\@linkedinlink}{\@linkedintext}} \fi \\[2pt]
+      \ifx\@githublink\@empty \else \ContactItem{\faGithub}{\href{\@githublink}{\@githubtext}} \fi &
+      \ifx\@skypelink\@empty \else \ContactItem{\faSkype}{\href{\@skypelink}{\@skypetext}} \fi
+    \end{tabular}
+  \end{minipage}%
+  \ifx\@profilepic\@empty \else
+    \hfill
+    \begin{minipage}[c]{0.20\linewidth}
+      \raggedleft
+      \fboxrule=0.6pt
+      \fboxsep=0pt
+      \fcolorbox{rulecolor}{white}{%
+        \includegraphics[width=2.5cm, height=3.2cm, keepaspectratio]{\@profilepic}%
+      }%
+    \end{minipage}%
+  \fi
   \par
-  \addressskip
-}
-
-% \printname is used to print the name as a page header
-\def \printname {
-  \begingroup
-    \hfil{\MakeUppercase{\namesize\bf \@name}}\hfil
-    \nameskip\break
+  \vspace{0.3em}
   \endgroup
 }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% DOCUMENT: Create the head of the document
-
-\let\ori@document=\document
-\renewcommand{\document}{
-  \ori@document                     % Begin document
-  \printname                        % Print the name specified with \name
-  \@ifundefined{@addressone}{}{     % Print the first address if specified
-    \printaddress{\@addressone}}
-  \@ifundefined{@addresstwo}{}{     % Print the second address if specified
-    \printaddress{\@addresstwo}}
+% Section Environment
+\newenvironment{rSection}[1]{%
+  \vspace{0.4em}%
+  \noindent{\color{primary}\bfseries\large\MakeUppercase{#1}}\par\nopagebreak\vspace{2pt}%
+  {\color{accent}\hrule height 1.2pt}\par\nopagebreak\vspace{3pt}%
+}{%
+  \par\vspace{0.15em}%
 }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% SECTIONS: Create section headings
-
-% Used to create large resume section
-\newenvironment{rSection}[1]{
-  \sectionskip
-  \MakeUppercase{\bf #1}
-  \sectionlineskip
-  \hrule
-  \begin{list}{}{
-    \setlength{\leftmargin}{1.5em}
-  }
-  \item[]
-}{
-  \end{list}
+% Subsection Environment (for work experience)
+\newenvironment{rSubsection}[4]{%
+  \vspace{0.25em}%
+  \noindent%
+  \textbf{\color{primary} #1}%
+  \ifthenelse{\equal{#2}{}}{}{\hfill {\small\color{subtext}\textbf{#2}}}\\%
+  \ifthenelse{\equal{#3}{}}{}{%
+    \textit{\color{textdark} #3}%
+    \ifthenelse{\equal{#4}{}}{}{\hfill {\small\color{subtext}\textit{#4}}}\\%
+  }%
+  \vspace{-0.25em}%
+  \begin{itemize}[leftmargin=1.2em, itemsep=1.2pt, parsep=0pt, topsep=1.5pt]%
+}{%
+  \end{itemize}%
+  \vspace{0.1em}%
 }
 
-% Used to format job listing
-\newenvironment{rSubsection}[4]{
-  %%%%%%%%%%%%%%%%%%%%%% Default Layout: %%%%%%%%%%%%%%%%%%%%%%%%
-  %%    Employer (bold)                     Dates (regular)    %%
-  %%    Title (emphasis)                Location (emphasis)    %%
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  {\bf #1}                 \hfill                  {    #2}% Stop a space
-  \ifthenelse{\equal{#3}{}}{}{
-  \\
-  {\em #3}                 \hfill                  {\em #4}% Stop a space
-  }\smallskip
-  % \cdot used for bullets, items non-indented
-  \begin{list}{$\cdot$}{\leftmargin=0em}
-  \itemsep -0.5em \vspace{-0.5em}
-}{
-  \end{list}
-  \vspace{0.5em}
+% Simple entry without bullet list (ideal for Education)
+\newcommand{\rEntry}[4]{%
+  \vspace{0.25em}%
+  \noindent%
+  \textbf{\color{primary} #1}%
+  \ifthenelse{\equal{#2}{}}{}{\hfill {\small\color{subtext}\textbf{#2}}}\\%
+  \ifthenelse{\equal{#3}{}}{}{%
+    \textit{\color{textdark} #3}%
+    \ifthenelse{\equal{#4}{}}{}{\hfill {\small\color{subtext}\textit{#4}}}\\%
+  }%
+  \vspace{0.1em}%
 }
 
-\newlength{\spacebox}
-\settowidth{\spacebox}{8888888888}			% Box to align text
-% \newcommand{\sepspace}{\vspace*{1em}}
+% Project Sub-header inside rSubsection
+\newcommand{\rProjectsHeader}[1][Key Projects]{%
+  \end{itemize}%
+  \vspace{1.5pt}%
+  \noindent\textbf{\textit{\color{primary} #1:}}\par\nopagebreak\vspace{1pt}%
+  \begin{itemize}[leftmargin=1.2em, itemsep=1.2pt, parsep=0pt, topsep=1pt, label={\small\color{subtext}\textbf{--}}]%
+}
 
-\newcommand{\PersonalEntry}[2]{
-		\noindent\hangindent=2em\hangafter=0 % Indentation
-		\parbox{\spacebox}{        % Box to align text
-		\textit{#1}}		       % Entry name (birth, address, etc.)
-		\hspace{1.5em} #2 \par}    % Entry value
+% Skill category command
+\newcommand{\skillcategory}[2]{%
+  \noindent\textbf{\color{primary} #1:} \textcolor{textdark}{#2}\par\vspace{1.5pt}%
+}
 
-\def\namesize{\huge}
-\def\nameskip{\medskip}
-\def\addressskip{\smallskip}
-\def\sectionskip{\bigskip}
-\def\sectionlineskip{\medskip}
+% Backwards compatibility alias for PersonalEntry
+\newcommand{\PersonalEntry}[2]{%
+  \noindent\parbox{1.5em}{\textcolor{accent}{#1}}\hspace{0.5em}#2\par\vspace{2pt}%
+}

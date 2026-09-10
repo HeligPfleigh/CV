@@ -1,186 +1,131 @@
 \documentclass{resume}
 
-\usepackage[left=0.75in,top=0.6in,right=0.75in,bottom=0.6in]{geometry}
+\usepackage[left=0.68in,top=0.42in,right=0.68in,bottom=0.42in]{geometry}
 
-
+% Personal Information
 \name{Tran Duy Tuan}
-
-
-% \def\nameskip{\bigskip}
-% \def\sectionskip{\medskip}
+\tagline{Senior Full-Stack Software Engineer}
+\profilepic{profile}
+\phone{(+84) 37 985 3282}
+\email{trantuan1892@gmail.com}
+\location{Hanoi, Vietnam}
+\linkedin{https://linkedin.com/in/tuan-tran-3115b9171/}{linkedin.com/in/tuan-tran}
+\github{https://github.com/HeligPfleigh}{github.com/HeligPfleigh}
+\skype{https://join.skype.com/invite/e6vBMHoDBqyJ}{skype.com/invite/e6vBMHoDBqyJ}
 
 \begin{document}
 
-  %%% Overview
+  \makecvheader
+
+  %%% Professional Summary
   %%% ------------------------------------------------------------
+  \begin{rSection}{Professional Summary}
+    Senior Full-Stack Software Engineer \& Tech Lead with over ten years of experience architecting, scaling, and deploying enterprise-grade distributed systems, cloud backends, and responsive web applications. Deep expertise across Node.js (NestJS, Koa), Python (FastAPI), React, and modern data architectures (PostgreSQL, CosmosDB, Redis). Proven track record leading 15-member engineering teams to deliver high-availability FinTech platforms, multi-agent AI systems (LangGraph, Azure MCP Server), and secure microservices. Strong advocate of AI-augmented software engineering --- leveraging AI coding harnesses (Claude Code, Cursor, GitHub Copilot) to accelerate the SDLC while applying sound engineering judgment, rigorous review, and full production ownership.
+  \end{rSection}
 
-  \noindent\begin{minipage}{0.8\textwidth}% adapt widths of minipages to your needs
-    Over 9 years as a full-stack JS developer, I'm passionate about crafting reusable and well-constructed websites and applications 
-    using NodeJS, React, React Native (7 years of experience). 
-    I thrive on tackling complex challenges and designing elegant solutions that deliver long-term value. 
-    My expertise lies in quickly deconstructing problems, identifying core functionalities, and devising effective strategies.\newline
-
-    A lifelong learner and dedicated team player, I believe in fostering a collaborative and supportive environment. 
-    I actively participate in code reviews and mentoring,  contributing to knowledge sharing and team growth.\newline
-    \end{minipage}%
-    \hfill%
-    \begin{minipage}{0.1\textwidth}\raggedright
-      \includegraphics[width=3cm, height=4cm]{profile}
-    \end{minipage}
-
-  %%% Skills
+  %%% Technical Skills
   %%% ------------------------------------------------------------
-  \begin{rSection}{Technical skill}
-    \begin{rSubsection}{}{}{}{}
-      \item Proficiency in JavaScript with a strong preference for TypeScript.
-      \item Expert-level knowledge of React and React Native.
-      \item Experience with popular UI libraries: Redux/Mobx, Material-UI, Ant Design.
-      \item API development and design using Node.js with frameworks like Koa, Loopback, FeathersJS, or NestJS.
-      \item Experience with GraphQL and related technologies (TypeORM, Apollo, Hasura).
-      \item Experience with both NoSQL databases (MongoDB) and SQL databases (PostgreSQL).
-      \item Experience with microservices architecture and micro-frontend patterns.
-      \item Familiarity with Linux, Git, Docker, Kubernetes, and Jenkins.
-      \item Strong experience in writing unit tests using frameworks like Jest, React Testing Library, Cypress, or Playwright.
-      \item Strong understanding of data structures and algorithms.
-      \item Excellent problem-solving and analytical skills.
-      \item Experience with continuous integration and continuous deployment (CI/CD).
-    \end{rSubsection}
+  \begin{rSection}{Technical Skills}
+    \skillcategory{Languages}{JavaScript (ES6+), TypeScript, Python, Go, Dart, C/C++, SQL, HTML5, CSS3}
+    \skillcategory{Backend \& Architecture}{FastAPI, Node.js (NestJS, Koa, LoopBack, Express), Microservices, RESTful APIs, GraphQL, Pydantic, gRPC, WebSockets, OAuth2/JWT, RBAC}
+    \skillcategory{Databases \& Cloud}{CosmosDB, PostgreSQL, MongoDB, Redis (caching \& queues), Azure Cloud, Docker, Kubernetes, CI/CD, Git, Linux}
+    \skillcategory{AI \& Agentic Systems}{LangGraph, LangChain, Azure AI Foundry, Azure MCP Server, Multi-Agent Systems, HITL, Trajectory Evals}
+    \skillcategory{AI-Assisted SDLC}{Claude Code, Cursor, GitHub Copilot, AI-driven refactoring, automated testing, SDLC harness}
+    \skillcategory{Frontend \& Mobile}{React, React Native (Expo/CLI), Angular, Vue.js, PixiJS, Redux, MobX, MUI, Ant Design}
   \end{rSection}
   
-  %%% Exp
+  %%% Work Experience (Current Lead Role)
   %%% ------------------------------------------------------------
-  \begin{rSection}{Experience}
-    \begin{rSubsection}{Techvify}{June 2024 - Present}{Senior Software Engineer}{}
-      \item Assist with creating technical proposals, effort estimations, and do POC
-      \item Oversee the entire development lifecycle, from planning and design to implementation and testing
-      \item Develop and maintain high-quality, scalable, and maintainable code using various programming languages (e.g., js/ts, go, dart) and frameworks (e.g., React, Angular, Vue.js, Node.js)
-      \item Lead and mentor junior developers, providing guidance, code reviews, and technical support.
-      \item Collaborate and work with cross-functional teams (designers, product managers, QA) to deliver high-quality products
+  \begin{rSection}{Work Experience}
+    \begin{rSubsection}{Techvify}{June 2024 -- Present}{Senior Full-Stack Engineer / Team Lead}{Hanoi, Vietnam}
+      \item Lead a 15-member engineering team delivering an enterprise-grade FinTech compliance and document intelligence platform for Singapore clients.
+      \item Architect a multi-agent system using \textbf{LangGraph}, \textbf{LangChain}, and \textbf{Azure MCP Server} with human-in-the-loop (HITL) checkpoints and automated trajectory evaluations for compliant reasoning.
+      \item Design cloud-native backend microservices using \textbf{FastAPI}, \textbf{Pydantic}, and \textbf{CosmosDB}; implement asynchronous ingestion pipelines, vector indexing, and Redis caching.
+      \item Leverage AI-assisted tooling (\textbf{Claude Code}, \textbf{Cursor}, \textbf{GitHub Copilot}) across the SDLC (code generation, refactoring, test authoring, docs) while maintaining rigorous review, validation, and full production ownership.
+      \rProjectsHeader
+      \item \textbf{Auditing Domain (Enterprise FinTech AI Platform)}: Intelligent document management and multi-agent retrieval system where financial documents are ingested, validated, and indexed as the primary knowledge source for contextual Q\&A, summarization, and compliance extraction.
+      \item \textbf{e-Mobility \& GET/CNI}: EV charger management platform with payment integration; commercial building telemetry analytics system.
     \end{rSubsection}
-
-    \vspace{-0.5cm}\begin{rSubsection}{}{}{My working projects at Techvify}{}
-      \item {\emph{GET/CNI}}: An application for building energy and water consumption tracking, reporting, and analysis
-      \item {\emph{e-Mobility}}: An application for electric vehicle charger management, including a payment gateway integration.
-    \end{rSubsection}
-
-    \newpage
-
-    \begin{rSubsection}{Ewoosoft Vietnam}{September 2020 - June 2024}{Fullstack Javascript Developer}{}
-      \item Using react, pixijs and conerstone to develop an utility app for handling medical images
-      \item Review other team member code and paticipate in creating software requirement specification document 
-    \end{rSubsection}
-
-    \vspace{-0.5cm}\begin{rSubsection}{}{}{My working projects at Ewoosoft}{}
-      \item {\emph{EzDentWeb}}: A web app/ electron app which help diagnosis, consultation, simulation dicom image for clinic
-      \item {\emph{EzWebServerAdmin}}: An admin page to manage user/setting/license, etc for EzDentWeb
-      \item \href{https://intro.kr.dentalcleverlab.com/}{\emph{KCLab-K}}: A web application to help clinic managing their orders/payment and monthly statistics
-    \end{rSubsection}
-
-    
-
-    \begin{rSubsection}{Icetea software (parttime)}{October 2023 - Present}{React Native Developer}{}
-      \item Design, develop, and implement mobile app features using Expo
-      \item Collaborate with UI/UX designers to translate design mockups into functional code and also participate in code review and estimation
-    \end{rSubsection}
-
-    \vspace{-0.5cm}\begin{rSubsection}{}{}{My working projects at Icetea}{}
-      \item {\emph{CUBE MYS/PHL/}}: A cross-plaform application which help to find the most suitable FWD insurance products to user based on their country
-    \end{rSubsection}
-
-    \vspace{0.8cm}\begin{rSubsection}{Hivetech (parttime)}{April 2022 - December 2023}{Frontend Developer}{}
-      \item Led the development team in building reusable and performant UI components using React/Razzle, following modern JavaScript practices.
-      \item Develop and maintain a custom blog or content management system (CMS) using Drupal. 
-    \end{rSubsection}
-
-    \vspace{-0.5cm}\begin{rSubsection}{}{}{My working projects at Hivetech}{}
-      \item \href{https://bizibuz.com/}{\emph{Bizibuz}}: a data-driven platform with a powerful after school course search engine, that uses algorithms to optimize parents’ decisions around activity selection and automates end-to-end enrolment.
-    \end{rSubsection}
-
-    \vspace{0.8cm}\begin{rSubsection}{Prox (parttime)}{April 2023 - July 2023}{React Native Developer}{}
-      \item Design, develop, and implement mobile app features using React Native
-      \item Collaborate with UI/UX designers to translate design mockups into functional code
-    \end{rSubsection}
-
-    \vspace{-0.5cm}\begin{rSubsection}{}{}{My working projects at Prox}{}
-      \item \href{https://apps.apple.com/us/app/pure-tubi-mp3-player/id1658133343}{\emph{SnapVid}}
-      \item \href{https://apps.apple.com/vn/app/id1617873009}{\emph{Tajzemoli Trailer}}
-    \end{rSubsection}
-
-    \vspace{0.8cm}\begin{rSubsection}{CMC (parttime)}{September 2021 - December 2021}{React Developer}{}
-      \item Collaborate closely with designers and back-end engineers to translate UI/UX mockups into clean, efficient, and well-tested code.
-      \item Optimize application performance for a seamless user experience across different devices and browsers.
-    \end{rSubsection}
-
-    \vspace{-0.5cm}\begin{rSubsection}{}{}{My working projects at CMC}{}
-      \item \href{https://maxstream.tv/}{\emph{Maxstream}}: A media stream website.
-    \end{rSubsection}
-
-
-    \vspace{0.8cm}\begin{rSubsection}{MTT Software Company}{November 2017 - September 2020}{Fullstack JavaScript Developer}{}
-      \item Develop dynamic and responsive website, mobile applications with clean interface and simple, instuitive interaction.
-      \item Develop project concepts and maintain optimal workflow.
-      \item Participate in database design and api backend tasks.
-      \item Carry out quality assurance unit tests to discover errors and optimize usability.
-      \item Collaborated with designers to meet customer expectations.
-      \item Optimized website/application usability.
-      \item Maintained the team workflow.
-      \item Completed programming and development tasks of different difficulty levels.
-    \end{rSubsection}
-
-    \vspace{-0.5cm}\begin{rSubsection}{}{}{My accomplished projects at MTT}{}
-      \item \href{https://app.scnt.me/}{\emph{Scentronix}}: A PWA web app which help people select their favorite perfume ingredients to make their own one.
-      \item \href{https://www.madlogic.nl/magic/}{\emph{Madlogic}}: A communication application for organizations that want to reach and connect all employees quickly.
-      \item \href{https://mttjsc.com/}{\emph{MTT Website}}: An affiliate website for MTT.
-      \item \emph{Nailshop Ecosystem} (\href{https://play.google.com/store/apps/developer?id=MTT+Software+Company+LTD/}{\emph{Android}}/\href{https://apps.apple.com/us/developer/mttjsc/id1250334932}{\emph{IOS}}): 
-      An ecosystem to provide service for nailshop owner manager their
-      staff, schedule their working timeline, get monthly statistic report and connect customer with shops.
-      \item \href{http://app.faktoora.com}{\emph{Faktoora}}: E-billing system.
-      \item \emph{Post Luxemburd}: A log analysis system base on Splunk platform which provide intuitive view for network attack.
-      \item \emph{I Feel Good} (\href{https://play.google.com/store/apps/details?id=com.ifg_mobile}{\emph{Android}}/\href{}{\emph{IOS}}): 
-      An utility application which highlights in a glance all the factors that have an impact on your physical and mental health.
-    \end{rSubsection}
-  
-    \vspace{0.8cm}\begin{rSubsection}{SVMC}{April 2015 - November 2017}{C++ Developer}{}
-      \item Collaborated with team member to develop and maintain the existed application.
-      \item Participated in researching/studying new technology for application.
-      \item Testing and writing documentation.
-    \end{rSubsection}
-
-    \begin{rSubsection}{}{}{My accomplished projects at SVMC}{}
-      \item \emph{PST}: A tool which establish communication protocol between PC and wireless device to help checking firmware.
-      \item \emph{SUA/SRA/Smartswitch PC}: Provide a solution to transfer file, contact, etc.. from your old phone to the new one.
-      \item \emph{Automatic defect detector}: An automatic approach to determine which device have defect and type of defect, stage cause defect.
-    \end{rSubsection}
-  
   \end{rSection}
 
   \newpage
 
-  %%% Others
+  %%% Mid-Career Experience
+  %%% ------------------------------------------------------------
+  \begin{rSection}{Work Experience (Continued)}
+    \begin{rSubsection}{Ewoosoft Vietnam}{September 2020 -- June 2024}{Full-Stack Web Developer}{Hanoi, Vietnam}
+      \item Architected scalable backend services with \textbf{Node.js (NestJS, Koa)} and \textbf{PostgreSQL}, relational schemas, and Redis caching.
+      \item Built secure RESTful APIs, RBAC authorization, and licensing verification microservices for distributed clinical server networks.
+      \item Engineered performant web applications with React, optimizing canvas and Cornerstone.js rendering pipelines for DICOM dental scans.
+      \rProjectsHeader
+      \item \textbf{EzDentWeb}: Web and Electron-based clinical application for DICOM dental image simulation, diagnostic consultation, and treatment planning.
+      \item \textbf{EzWebServerAdmin}: Administration portal managing user authorization, role-based access control, licensing, and system configuration for EzDentWeb.
+      \item \href{https://intro.kr.dentalcleverlab.com/}{\textbf{KCLab-K}}: Comprehensive dental laboratory management platform streamlining lab orders, invoicing, payment tracking, and analytics.
+    \end{rSubsection}
+
+    \begin{rSubsection}{Icetea Software}{October 2023 -- Present}{Cross-platform Mobile Developer (Part-time)}{Hanoi, Vietnam}
+      \item Architect cross-platform mobile features using React Native and Expo; integrate backend APIs and user authentication flows.
+      \item Collaborate with UI/UX designers and contribute to sprint estimation, technical feasibility, and continuous code reviews.
+      \rProjectsHeader
+      \item \textbf{CUBE (MYS / PHL)}: Cross-platform mobile insurance recommendation app matching Southeast Asian users with tailored FWD insurance policies based on country-specific criteria.
+    \end{rSubsection}
+
+    \begin{rSubsection}{Hivetech}{April 2022 -- December 2023}{Web Developer (Part-time)}{Hanoi, Vietnam}
+      \item Engineered performant UI components using React and Razzle (SSR), adhering to modern JavaScript practices.
+      \item Developed backend REST endpoints, business logic, and webhook integrations with Node.js and Drupal CMS, optimizing query performance.
+      \rProjectsHeader
+      \item \href{https://bizibuz.com/}{\textbf{Bizibuz}}: Data-driven after-school activity discovery platform powered by intelligent recommendation algorithms and automated end-to-end enrollment.
+    \end{rSubsection}
+
+    \begin{rSubsection}{Prox}{April 2023 -- July 2023}{Cross-platform Mobile Developer (Part-time)}{Hanoi, Vietnam}
+      \item Developed high-performance audio/video playback pipelines and background media streaming services using React Native.
+      \item Collaborated with UI/UX designers to implement smooth gesture handling, custom animations, and backend API integrations.
+      \item \href{https://apps.apple.com/us/app/pure-tubi-mp3-player/id1658133343}{\textbf{SnapVid}} \& \href{https://apps.apple.com/vn/app/id1617873009}{\textbf{Tajzemoli Trailer}}: Media player with background playback and movie trailer catalog streaming apps.
+    \end{rSubsection}
+  \end{rSection}
+
+  \newpage
+
+  %%% Foundational Experience, Education & Certifications
+  %%% ------------------------------------------------------------
+  \begin{rSection}{Work Experience (Continued)}
+    \begin{rSubsection}{CMC Global}{September 2021 -- December 2021}{Web Developer (Part-time)}{Hanoi, Vietnam}
+      \item Built high-performance React web components and integrated backend video streaming APIs with token authentication and CDN caching.
+      \rProjectsHeader
+      \item \href{https://maxstream.tv/}{\textbf{Maxstream}}: High-traffic digital video streaming and entertainment web portal.
+    \end{rSubsection}
+
+    \begin{rSubsection}{MTT Software Company}{November 2017 -- September 2020}{Full-Stack Web Developer}{Hanoi, Vietnam}
+      \item Designed and deployed scalable Node.js (LoopBack, Express) backends, RESTful/GraphQL APIs, and database schemas on PostgreSQL and MongoDB.
+      \item Implemented multi-tenant data isolation, third-party payment gateways (Stripe, PayPal), real-time WebSockets, and automated CI/CD test suites.
+      \rProjectsHeader
+      \item \href{https://app.scnt.me/}{\textbf{Scentronix}}: Interactive Progressive Web App (PWA) allowing customers to personalize fragrance formulations with ingredient blending.
+      \item \textbf{Nailshop Ecosystem} (\href{https://play.google.com/store/apps/developer?id=MTT+Software+Company+LTD/}{\textit{Android}} / \href{https://apps.apple.com/us/developer/mttjsc/id1250334932}{\textit{iOS}}): Multi-tenant salon platform managing staff scheduling, appointments, billing, and loyalty.
+      \item \textbf{Post Luxembourg}: Security event monitoring and log analytics dashboard on Splunk, delivering real-time threat visualization.
+      \item \href{http://app.faktoora.com}{\textbf{Faktoora}} \& \href{https://www.madlogic.nl/magic/}{\textbf{Madlogic}}: Cloud e-billing system and internal enterprise communication mobile application.
+      \item \textbf{I Feel Good} (\href{https://play.google.com/store/apps/details?id=com.ifg_mobile}{\textit{Android}}): Holistic health and wellness tracking mobile application.
+    \end{rSubsection}
+
+    \begin{rSubsection}{SVMC (Samsung Vietnam Mobile R\&D Center)}{April 2015 -- November 2017}{C++ Software Engineer}{Hanoi, Vietnam}
+      \item Developed low-level diagnostic services, IPC protocols, and wireless communications (USB, Bluetooth, Wi-Fi) connecting host PCs and embedded devices in C/C++.
+      \rProjectsHeader
+      \item \textbf{Smart Switch PC / SUA / SRA}: Official Samsung PC data migration tool facilitating seamless cross-platform backup and restore of contacts, multimedia, and settings.
+      \item \textbf{PST (Phone Software Tool)}: Diagnostic protocol tool interfacing between PC and wireless devices for automated firmware validation.
+      \item \textbf{Automatic Defect Detector}: Automated hardware defect diagnosis software identifying failure stages in manufacturing lines.
+    \end{rSubsection}
+  \end{rSection}
+
+  %%% Education
   %%% ------------------------------------------------------------
   \begin{rSection}{Education}
-    {\bf Hanoi University of Science and Technology} \\ 
-    { B.S. in Information Technology (CTES program) } \\
+    \rEntry{Hanoi University of Science and Technology (HUST)}{2010 -- 2015}{Bachelor of Science in Information Technology (CTES Program)}{Hanoi, Vietnam}
   \end{rSection}
 
-  % \newpage
-
-  \begin{rSection}{Languages}
-    {\bf English} \\ 
-    { TOEIC Certificate scored 805  } \hfill {\em August 2017 - August 2019} \\
-  \end{rSection}
-
-  %%% Personal details
+  %%% Languages & Certifications
   %%% ------------------------------------------------------------
-  \begin{rSection}{Contacts}
-    \PersonalEntry{\faPhone}{(+84) 37 985 3282}
-    \PersonalEntry{\faSkype}{\url{https://join.skype.com/invite/e6vBMHoDBqyJ}}
-    \PersonalEntry{\faAt}{\href{mailto:trantuan1892@gmail.com}{trantuan1892@gmail.com}}
-    \PersonalEntry{\faLinkedin}{\url{https://linkedin.com/in/tuan-tran-3115b9171/}}
-    \PersonalEntry{\faGithub}{\url{https://github.com/HeligPfleigh}}
-    % \PersonalEntry{\faStackOverflow}{\url{https://stackoverflow.com/users/5832644/tuan-tran}}
-    \PersonalEntry{\faBirthdayCake}{December 18, 1992}
-    \PersonalEntry{\faMapMarker}{Hanoi}
+  \begin{rSection}{Languages \& Certifications}
+    \skillcategory{English}{TOEIC Score: 805 / 990 (Professional working proficiency)}
+    \skillcategory{Vietnamese}{Native proficiency}
   \end{rSection}
 
 \end{document}
